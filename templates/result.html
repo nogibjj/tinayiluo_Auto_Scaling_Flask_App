@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Illness Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+    <main>
+        <div class="px-4 py-3 my-2 text-center">
+            <h1 class="display-6 fw-bold text-primary">Here is Your Illness Diagnostic</h1>
+            <!-- Split the result by newline characters and display each line -->
+            {% for line in result.splitlines() %}
+                <p class="fs-5">{{ line }}</p >
+            {% endfor %}
+            <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg px-4 gap-3">Back home</a>
+        </div>
+    </main>
+</body>
+
+</html>

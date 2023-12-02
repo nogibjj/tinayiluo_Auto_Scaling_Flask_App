@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Set up Environment Variables
+        run: |
+          echo "API_TOKEN=${{ secrets.API_TOKEN }}" >> $GITHUB_ENV
       - name: install packages
         run: make install
       - name: lint

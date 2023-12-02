@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Doctor - Python Quickstart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+    <main>
+        <div class="px-4 py-3 my-2 text-center">
+          <img class="d-block mx-auto mb-4" src="{{ url_for('static', filename='happy_doctor.jpg') }}    
+          " alt="Doctor Image" width="192" height="192" />
+            <h1 class="display-6 fw-bold text-primary">Welcome to Your Online Doctor</h1>
+        </div>
+        <form method="post" action="{{ url_for('predict') }}" id="queryForm">
+            <div class="col-md-6 mx-auto text-center">
+                <label for="prompt" class="form-label fw-bold fs-5">Could you please tell me your symptons?</label>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
+                    <input type="text" class="form-control" id="prompt" name="prompt" style="max-width: 256px;">
+                </div>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
+                    <button type="submit" class="btn btn-primary btn-lg px-4 gap-3" onclick="checkInput()">Search Illness</button>
+                </div>
+                <p id="warning" style="color: red;"></p >
+            </div>
+        </form>
+    </main>
+
+    <script>
+        function checkInput() {
+            const promptInput = document.getElementById('prompt').value.trim();
+
+            if (promptInput === "") {
+                document.getElementById('warning').innerText = "Please enter something in the input box.";
+                event.preventDefault(); // Prevent form submission
+            } else {
+                document.getElementById('warning').innerText = "";
+                document.getElementById('queryForm').submit();
+            }
+        }
+
+        document.getElementById('queryForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            // Check if the response is a redirect
+            if (response.redirected) {
+                window.location.href = response.url; // Redirect to the specified URL
+            } else {
+                const result = await response.json();
+                const resultElement = document.getElementById('result');
+                resultElement.innerText = result.result;
+            }
+        });
+    </script>
+</body>
+
+</html>

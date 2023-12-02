@@ -1,19 +1,73 @@
-"""
-Main cli or app entry point
-"""
+from dotenv import load_dotenv
+import os
+import requests
+import json
+import base64
+from flask import (
+    Flask,
+    redirect,
+    render_template,
+    request,
+    url_for,
+    jsonify,
+)
+import openai
 
-from mylib.calculator import add
-import click
+load_dotenv()
 
-#var=1;var=2
+app = Flask(__name__)
 
-@click.command("add")
-@click.argument("a", type=int)
-@click.argument("b", type=int)
-def add_cli(a, b):
-    click.echo(add(a, b))
+openai.api_key = os.getenv("API_TOKEN")
+
+
+@app.route("/")
+def index():
+    """retruns index page"""
+    return render_template("index.html")
+
+
+def get_completion(prompt, model="gpt-3.5-turbo"):
+    print(prompt)
+    prompt_answer = f"""
+        Perform the following actions:
+        1 - I will give you the symptoms I have.
+        2 - Specify one professional medical disease based on my symptoms.
+        3 - Answer questions in the formation part.
+        4 - For the `Illness` part, the formation should be:
+
+        Using the following format:
+        Symptoms: <symptom name>
+        Illness: <>
+
+        ```{prompt}```
+    """
+    messages = [{"role": "user", "content": prompt_answer}]
+    response = openai.ChatCompletion.create(
+        model=model,
+        messages=messages,
+        temperature=0,  # the degree of randomness of the model's output
+    )
+    return response.choices[0].message["content"]
+
+
+@app.route("/result")
+def result():
+    # Get the result from the URL parameter
+    result = request.args.get("result", "")
+    print(result)
+    return render_template("result.html", result=result)
+
+
+@app.route("/predict", methods=["POST"])
+def predict():
+    """test predict"""
+    print(request.form)
+    prompt = request.form.get("prompt")
+    result = get_completion(prompt)
+
+    # Redirect to the result page with the result as a parameter
+    return redirect(url_for("result", result=result))
 
 
 if __name__ == "__main__":
-    # pylint: disable=no-value-for-parameter
-    add_cli()
+    app.run(debug=True, port=8000)
