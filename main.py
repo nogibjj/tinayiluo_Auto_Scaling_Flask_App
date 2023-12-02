@@ -1,15 +1,11 @@
 from dotenv import load_dotenv
 import os
-import requests
-import json
-import base64
 from flask import (
     Flask,
     redirect,
     render_template,
     request,
     url_for,
-    jsonify,
 )
 import openai
 
