@@ -27,13 +27,13 @@ def get_completion(prompt, model="gpt-3.5-turbo"):
     prompt_answer = f"""
         Perform the following actions:
         1 - I will give you the symptoms I have.
-        2 - Specify one professional medical disease based on my symptoms.
-        3 - Answer questions in the formation part.
-        4 - For the `Illness` part, the formation should be:
+        2 - Specify one professional medical disease based on my symptoms. 
+        3 - Provide a paragraph of information about the disease.
+        4 - Answer in the formation part.
 
         Using the following format:
         Symptoms: <symptom name>
-        Illness: <>
+        Illness: <illness name> , <illness description>
 
         ```{prompt}```
     """
