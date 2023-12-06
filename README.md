@@ -1,7 +1,7 @@
 [![CI](https://github.com/nogibjj/tinayiluo_individual4/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/tinayiluo_individual4/actions/workflows/cicd.yml)
 ## Auto Scaling Flask App Using Azure Container Platform
 
-Individual Project 4
+[Hello Doctor Web Application](https://week13.calmisland-989659dc.westus2.azurecontainerapps.io)
 
 ### Goal
 Construct an auto-scaling, publicly accessible container that incorporates a fully functional Large Language Model (LLM), utilizing Azure App Services and Flask for deployment and management. 
@@ -14,8 +14,6 @@ The project, "Hello Doctor," is a Flask web application integrated with OpenAI's
 - Illness Search: The application processes these symptoms and searches for a corresponding illness using the AI model.
 
 - Diagnostic Output: The web application then presents a detailed diagnostic of the identified illness to the user.
-
-[Hello Doctor Web Application](https://week13.calmisland-989659dc.westus2.azurecontainerapps.io)
 
 <img width="727" alt="Screen Shot 2023-12-06 at 12 35 54 PM" src="https://github.com/nogibjj/tinayiluo_individual4/assets/143360909/d79e6e93-f9ae-41f5-b73a-2a58115d2a26">
 
