@@ -3,15 +3,19 @@
 
 Individual Project 4
 
-[Hello Doctor Website](https://week13.calmisland-989659dc.westus2.azurecontainerapps.io)
-
 ### Goal
-Build a publicly accessible auto-scaling container with a functioning embedded LLM using Azure App Services and Flask. 
+Construct an auto-scaling, publicly accessible container that incorporates a fully functional Large Language Model (LLM), utilizing Azure App Services and Flask for deployment and management. 
 
 ### Overview 
-The project is a Flask web application called "Hello Doctor" integrated with the Open AI LLM model. It utilizes Docker for containerizatio and showcases image processing capabilities. Here is a brief workflow of the Flask web application:
+The project, "Hello Doctor," is a Flask web application integrated with OpenAI's LLM model, utilizing Docker for effective containerization. Here is a brief workflow overview of the Flask web application:
 
-(User) Input Symptons - Search For Illness - (Web) Output Illness Diagnostic
+- User Input: Individuals input their symptoms into the application.
+
+- Illness Search: The application processes these symptoms and searches for a corresponding illness using the AI model.
+
+- Diagnostic Output: The web application then presents a detailed diagnostic of the identified illness to the user.
+
+[Hello Doctor Web Application](https://week13.calmisland-989659dc.westus2.azurecontainerapps.io)
 
 <img width="727" alt="Screen Shot 2023-12-06 at 12 35 54 PM" src="https://github.com/nogibjj/tinayiluo_individual4/assets/143360909/d79e6e93-f9ae-41f5-b73a-2a58115d2a26">
 
@@ -66,33 +70,33 @@ The project is a Flask web application called "Hello Doctor" integrated with the
 #### Flask Web Application:
 - **Functionality:** The web app allows users to input prompts, which are then processed by the GPT-3.5 model to generate responses. The responses are displayed on a results page.
 
-- `main.py`:
+    - `main.py`:
 
-  - Import Statements: The script imports necessary modules and functions. It uses dotenv to load environment variables, os for operating system interactions, and various components from Flask to handle web requests and responses. It also imports the openai module to interact with OpenAI's API.
-  
-  - Environment Variables: load_dotenv() loads environment variables from a .env file. This typically includes sensitive data like API keys.
-  
-  - Flask App Initialization: app = Flask(__name__) initializes a new Flask application. 
-  
-  - OpenAI API Key: Sets the OpenAI API key by fetching it from environment variables. This key is necessary for authenticating requests to OpenAI's services.
-  
-  - Index Route: The @app.route("/") decorator defines the root endpoint of the web application. When a user visits the root URL, the index() function renders and returns the index.html template.
-  
-  - get_completion Function: This function takes a user prompt and sends it to OpenAI's GPT-3.5 model. It formats the prompt, sends it to the model, and returns the generated response. The temperature parameter is set to 0, indicating no randomness in response generation.
-  
-  - Result Route: The @app.route("/result") endpoint is used to display results. It fetches results from URL parameters and renders them using the result.html template.
-  
-  - Predict Route: The @app.route("/predict", methods=["POST"]) endpoint handles prediction requests. It retrieves user input from a form, processes it through the get_completion function, and redirects to the result page with the generated output.
+        - Import Statements: The script imports necessary modules and functions. It uses dotenv to load environment variables, os for operating system interactions, and various components from Flask to handle web requests and responses. It also imports the openai module to interact with OpenAI's API.
+        
+        - Environment Variables: load_dotenv() loads environment variables from a .env file. This typically includes sensitive data like API keys.
+        
+        - Flask App Initialization: app = Flask(__name__) initializes a new Flask application. 
+        
+        - OpenAI API Key: Sets the OpenAI API key by fetching it from environment variables. This key is necessary for authenticating requests to OpenAI's services.
+        
+        - Index Route: The @app.route("/") decorator defines the root endpoint of the web application. When a user visits the root URL, the index() function renders and returns the index.html template.
+        
+        - get_completion Function: This function takes a user prompt and sends it to OpenAI's GPT-3.5 model. It formats the prompt, sends it to the model, and returns the generated response. The temperature parameter is set to 0, indicating no randomness in response generation.
+        
+        - Result Route: The @app.route("/result") endpoint is used to display results. It fetches results from URL parameters and renders them using the result.html template.
+        
+        - Predict Route: The @app.route("/predict", methods=["POST"]) endpoint handles prediction requests. It retrieves user input from a form, processes it through the get_completion function, and redirects to the result page with the generated output.
 
-  - Main Block: The if __name__ == "__main__" block checks if the script is executed directly (not imported). If so, it runs the Flask app with debugging enabled on port 8000.
+        - Main Block: The if __name__ == "__main__" block checks if the script is executed directly (not imported). If so, it runs the Flask app with debugging enabled on port 8000.
 
-- `test_main.py`: ensures the availability of HTML files needed for the web application and verifies that the OpenAI API integration is functioning correctly. 
+    - `test_main.py`: ensures the availability of HTML files needed for the web application and verifies that the OpenAI API integration is functioning correctly. 
 
 - **HTML Templates:** The project contains HTML templates (`index.html`, `result.html`) providing a user-friendly interface.
 
-  - `index.html`: this HTML page serves as a user interface for submitting symptoms to a Flask-based web application, which then uses an AI model for generating a diagnosis. The page is designed to be user-friendly and responsive, leveraging Bootstrap for styling and JavaScript for form handling and asynchronous server communication.
+    - `index.html`: this HTML page serves as a user interface for submitting symptoms to a Flask-based web application, which then uses an AI model for generating a diagnosis. The page is designed to be user-friendly and responsive, leveraging Bootstrap for styling and JavaScript for form handling and asynchronous server communication.
 
-  - `result.html`: this HTML page serves as a simple, user-friendly interface for displaying the diagnostic results from the AI model. The use of Bootstrap ensures a clean layout, and the dynamic rendering of the result allows for a flexible display of information based on the AI model's output.
+    - `result.html`: this HTML page serves as a simple, user-friendly interface for displaying the diagnostic results from the AI model. The use of Bootstrap ensures a clean layout, and the dynamic rendering of the result allows for a flexible display of information based on the AI model's output.
 
 - **Static Image:** The project contains a `happy_doctor.ipg` image in the `static` folder providing a user-friendly website design. 
 
