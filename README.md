@@ -126,6 +126,8 @@ The project, "Hello Doctor," is a Flask web application integrated with OpenAI's
 
 - **Azure Container Apps Deployment:** The Flask app is successfully deployed on Azure Container Apps, providing a public endpoint for users to interact with the application.
 
+<img width="1440" alt="Screen Shot 2023-12-06 at 4 14 36 PM" src="https://github.com/nogibjj/tinayiluo_individual4/assets/143360909/179ecf8e-18ff-4efd-b21b-67798835f038">
+
 ### Check Format and Test Errors: 
 1. Format code `make format`
 2. Lint code `make lint`
