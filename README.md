@@ -55,13 +55,15 @@ The project, "Hello Doctor," is a Flask web application integrated with OpenAI's
 
     - Input API_TOKEN into Github to generate Secret
 
+    - Build docker image: docker build --tag <insert image name> .
+
     - Login to azure cli: `az login`
 
-    - Deploy azuer web app: `az containerapp up --resource-group <insert resource group> --name <insert app name> --ingress external --target-port 50505 --source .`
+    - Deploy Azuer web app: `az containerapp up --resource-group <insert resource group> --name <insert app name> --ingress external --target-port 50505 --source .`
 
     - Input API_TOKEN on Azure for Azure Configuration
 
-    - View app via `conatiner apps` and docker image via `container regsitry` in azure web portal 
+    - View app via `container apps` and docker image via `container registry` in azure web portal 
 
 ### Key Components 
 
@@ -119,6 +121,8 @@ The project, "Hello Doctor," is a Flask web application integrated with OpenAI's
 - **Azure Container Registry :** The Docker image is hosted on Azure Container Registry
 
 <img width="1440" alt="Screen Shot 2023-12-05 at 4 43 29 PM" src="https://github.com/nogibjj/tinayiluo_individual4/assets/143360909/30cec7c8-934a-4791-baad-c577ca5a7534">
+
+<img width="1440" alt="Screen Shot 2023-12-06 at 4 05 29 PM" src="https://github.com/nogibjj/tinayiluo_individual4/assets/143360909/9261c0a9-3ded-4a56-aca1-d9c7551b7633">
 
 - **Azure Container Apps Deployment:** The Flask app is successfully deployed on Azure Container Apps, providing a public endpoint for users to interact with the application.
 
