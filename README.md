@@ -2,6 +2,7 @@
 ## Auto Scaling Flask App Using Azure Container Platform
 
 [Hello Doctor Web Application](https://week13.calmisland-989659dc.westus2.azurecontainerapps.io)
+[Demo_Video](https://youtu.be/3LT7dBMBwjU)
 
 ### Goal
 Construct an auto-scaling, publicly accessible container that incorporates a fully functional Large Language Model (LLM), utilizing Azure App Services and Flask for deployment and management. 
